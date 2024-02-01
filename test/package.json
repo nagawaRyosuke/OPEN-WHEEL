@@ -4,7 +4,8 @@
     "main": "cypress.config.js",
     "scripts": {
         "test": "npx cypress open",
-        "build": "pwd;ls;"
+        "start": "cd ../; npm start",
+        "build": "cd ../; npm build"
     },
     "author": "",
     "license": "ISC",
