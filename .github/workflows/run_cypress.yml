@@ -63,6 +63,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
+          # test
           working-directory: test
           browser: chrome
           install: false
