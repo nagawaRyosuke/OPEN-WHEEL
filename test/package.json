@@ -4,8 +4,8 @@
     "main": "cypress.config.js",
     "scripts": {
         "test": "npx cypress open",
-        "start": "cd server; npm start",
-        "build": "cd server; npm install; cd ../client; npm install; npm run build"
+        "start": "cd ../server; npm start",
+        "build": "cd ../server; npm install; cd ../client; npm install; npm run build"
     },
     "author": "",
     "license": "ISC",
