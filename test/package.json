@@ -5,7 +5,7 @@
     "scripts": {
         "test": "npx cypress open",
         "start": "cd ../; npm start",
-        "build": "cd ../; npm build"
+        "build": "cd ../; npm run build"
     },
     "author": "",
     "license": "ISC",
