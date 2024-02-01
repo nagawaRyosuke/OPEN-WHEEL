@@ -65,6 +65,5 @@ jobs:
         with:
           working-directory: test
           browser: chrome
-          install: false
           build: npm run build
           start: npm start
