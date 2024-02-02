@@ -420,7 +420,10 @@ Cypress.Commands.add("fileFolderDelete", (name) => {
 
 // send command
 Cypress.Commands.add("sendCommand", () => {
-  const configObj = {host:'localhost', port:4000, user:'testuser', pass:'passw0rd'}
+  const hostname = process.env.WHEEL_TEST_HOSTNAME
+  const test_port = process.env.WHEEL_TEST_PORT
+  const test_user = process.env.WHEEL_TEST_USER
+  const configObj = {host:hostname, port:test_port, user:test_user, pass:process.env.WHEEL_TEST_REMOTE_PASSWORD}
   cy.task("sshExecuteCmd",{
     sshconn: configObj,
     command:'dirs=`ls -tF | grep / | head -1`; ls -t ${dirs} | grep -v / | wc -l;'
