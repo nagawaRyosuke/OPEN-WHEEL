@@ -2,6 +2,14 @@ describe('wheel test', () => {
   const testProject = 'test'
   const remotehost = process.env.WHEEL_TEST_REMOTEHOST
   const password = process.env.WHEEL_TEST_REMOTE_PASSWORD
+  const hostname = process.env.WHEEL_TEST_HOSTNAME
+  const test_port = process.env.WHEEL_TEST_PORT
+  const test_user = process.env.WHEEL_TEST_USER
+  // const remotehost = Cypress.env("WHEEL_TEST_REMOTEHOST")
+  // const password = Cypress.env("WHEEL_TEST_REMOTE_PASSWORD")
+  // const hostname = Cypress.env("WHEEL_TEST_HOSTNAME")
+  // const test_port = Cypress.env("WHEEL_TEST_PORT")
+  // const test_user = Cypress.env("WHEEL_TEST_USER")
   const screenShotFlg = false
   before(() => {
     cy.visit('/')
@@ -1098,7 +1106,7 @@ describe('wheel test', () => {
       cy.screenshot('test41: remove files', {overwrite: true, capture: 'runner'})
     }
 
-    cy.sendCommand().then(stdout => {
+    cy.sendCommand(hostname, test_port, test_user, password).then(stdout => {
       cy.softAssert(stdout, '0\n')
     })
     
@@ -1134,7 +1142,7 @@ describe('wheel test', () => {
       cy.screenshot('test42: keep files', {overwrite: true, capture: 'runner'})
     }
 
-    cy.sendCommand().then(stdout => {
+    cy.sendCommand(hostname, test_port, test_user, password).then(stdout => {
       cy.softAssert(stdout, '1\n')
     })
     
@@ -1170,7 +1178,7 @@ describe('wheel test', () => {
       cy.screenshot('test43: same as parent', {overwrite: true, capture: 'runner'})
     }
 
-    cy.sendCommand().then(stdout => {
+    cy.sendCommand(hostname, test_port, test_user, password).then(stdout => {
       cy.softAssert(stdout, '1\n')
     })
     
