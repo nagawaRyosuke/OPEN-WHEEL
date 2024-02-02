@@ -3,7 +3,6 @@ on:
   push:
     branches: 
       - master
-  workflow_dispatch:
 jobs:
   cypress-run:
     services:
@@ -13,8 +12,8 @@ jobs:
           - 4000:22
     env:
       WHEEL_USE_HTTP: 1
-      WHEEL_TEST_REMOTEHOST: testServer
-      WHEEL_TEST_REMOTE_PASSWORD: passw0rd
+      WHEEL_TEST_REMOTEHOST: ${{ secrets.WHEEL_TEST_REMOTEHOST }}
+      WHEEL_TEST_REMOTE_PASSWORD: ${{ secrets.WHEEL_TEST_REMOTE_PASSWORD }}
       TZ: JST-9
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       WHEEL_TEST_HOSTNAME: ${{ secrets.WHEEL_TEST_HOSTNAME }}
@@ -29,11 +28,11 @@ jobs:
 
       - run: >
           echo '[{
-            "name": "testServer",
-            "host": ${{ secrets.WHEEL_TEST_HOSTNAME }},
+            "name": "${{ secrets.WHEEL_TEST_REMOTEHOST }}",
+            "host": "${{ secrets.WHEEL_TEST_HOSTNAME }}",
             "path": "/home/testuser",
             "keyFile": null,
-            "username": ${{ secrets.WHEEL_TEST_USER }},
+            "username": "${{ secrets.WHEEL_TEST_USER }}",
             "numJob": 5,
             "port": ${{ secrets.WHEEL_TEST_PORT }},
             "id": "dummy-id",
